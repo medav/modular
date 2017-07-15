@@ -1,19 +1,19 @@
 {
     "target-name": "modular.exe",
+    "build-type": "executable",
     "bin-dir": "..",
     "includes": [ ],
     "sources": {
         "any": [
-            "sources/main.cpp"
+            "source/main.cpp"
         ],
         "win": [
-            "sources/module-win.cpp"
         ],
         "nix": [
-            "sources/module-nix.cpp"
+            "source/module-nix.cpp"
         ],
         "mac": [
-            "sources/module-mac.cpp"
+            "source/module-mac.cpp"
         ]
     }
 }

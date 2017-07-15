@@ -1,6 +1,6 @@
 
-#ifndef __MODULAR_COMMON__
-#define __MODULAR_COMMON__
+#ifndef __MODULAR__
+#define __MODULAR__
 
 // Language annotations for verbosity
 #define OPTIONAL

@@ -4,7 +4,7 @@
 
 #include <filesystem>
 
-#include "module-dispatch.h"
+#include "module-interface.h"
 
 namespace fs = std::experimental::filesystem;
 
