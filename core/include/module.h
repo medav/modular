@@ -8,14 +8,26 @@
 
 namespace fs = std::experimental::filesystem;
 
-struct ModuleOsHandle;
+struct _ModuleOsHandle;
+
+typedef enum {
+    ModuleDiscovered,
+    ModuleLoaded,
+    ModuleStarted,
+
+    // Error codes
+    ErrorNotFound,
+    ErrorNoLoaderFunction,
+    ErrorDispatchFailed
+
+} ModuleStatus;
 
 class Module {
 private:
-    struct ModuleOsHandle oshandle;
-    bool loaded;
-
+    fs::path module_path;
+    struct _ModuleOsHandle oshandle;
     ModuleDispatch dispatch;
+    ModuleStatus status;
 
 public:
     Module() = delete;
@@ -26,8 +38,11 @@ public:
     void operator=(const Module& other) = delete;
     void operator=(Module&& other);
 
+    ModuleStatus Status() { return status; }
+
     const ModuleDispatch& Dispatch() const { return dispatch; }
 
+    ~Module();
 };
 
 #endif

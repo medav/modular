@@ -4,16 +4,16 @@
     "includes": [ ],
     "sources": {
         "any": [
-
+            "sources/main.cpp"
         ],
         "win": [
-
+            "sources/module-win.cpp"
         ],
         "nix": [
-
+            "sources/module-nix.cpp"
         ],
         "mac": [
-            
+            "sources/module-mac.cpp"
         ]
     }
 }

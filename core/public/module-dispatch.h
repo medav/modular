@@ -10,4 +10,6 @@ typedef struct {
     OPTIONAL void (*Main)(IN int argc, IN char * argv[]);
 } ModuleDispatch;
 
+typedef ModuleDispatch (*ModuleLoadFunc)();
+
 #endif

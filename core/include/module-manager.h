@@ -5,9 +5,9 @@
 class ModuleManager {
 private:
     std::vector<Module> modules;
-    
-public:
 
+public:
+    
 }
 
 #endif
