@@ -25,7 +25,6 @@ void ModuleManager::DiscoverAndLoadRecursive(const fs::path& root) {
         }
         else if (fs::is_regular_file(entry.path())) {
             if (entry.path().extension().string() == ".dll") {
-                std::cout << "Loading " << entry.path().filename() << std::endl;
                 modules.push_back(Module(entry.path()));
             }
         }
@@ -37,15 +36,13 @@ void ModuleManager::DiscoverAndLoad() {
 }
 
 void ModuleManager::InitAll() {
-    std::cout << "Init" << std::endl;
     for (Module& module :  modules) {
         if (module.Status() == ModuleLoaded)
-            module.Dispatch().Initialize();
+            module.Dispatch().Initialize(&services);
     }
 }
 
 void ModuleManager::StartAll() {
-    std::cout << "Start" << std::endl;
     for (Module& module :  modules) {
         if (module.Status() == ModuleLoaded)
             module.Dispatch().Start();

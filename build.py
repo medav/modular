@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 
+rootdir = os.getcwd()
 core_public_dir = os.getcwd() + '/core/public'
 
 type_extensions = {
@@ -49,6 +50,10 @@ def BuildDirectory(dir_full_path):
     AddInclude(flags, 'public')
     AddInclude(flags, core_public_dir)
 
+    for incdir in config['includes']:
+        print(rootdir + '/' + incdir)
+        AddInclude(flags, rootdir + '/' + incdir)
+
     sources = config['sources']['any'] + config['sources']['win']
     
     for srcfile in sources:
@@ -65,3 +70,4 @@ def BuildDirectory(dir_full_path):
 
 BuildDirectory('core')
 BuildDirectory('modules/modular-pkg/hello-world')
+BuildDirectory('modules/modular-pkg/debug')

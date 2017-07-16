@@ -1,13 +1,11 @@
 {
-    "target-name": "hello-world",
+    "target-name": "debug",
     "target-type": "dynamic",
     "bin-dir": ".",
-    "includes": [
-        "modules/modular-pkg/debug/public"
-    ],
+    "includes": [ ],
     "sources": {
         "any": [
-        "source/main.cpp"
+            "source/main.cpp"
         ],
         "win": [ ],
         "nix": [ ],

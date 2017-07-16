@@ -7,26 +7,22 @@
 #include "debug-protocol.h"
 
 ModuleServices * services;
-DebugProtocol * debug;
+std::unique_ptr<DebugProtocol> debug;
 
 void ModuleInitialize(ModuleServices * _services) {
     services = _services;
+    debug.reset(new DebugProtocol);
+    services->InstallProtocol((Protocol *) debug.get());
 }
 
 void ModuleStart() {
-    debug = static_cast<DebugProtocol *>(services->LookupProtocol("debug"));
+    debug->Debug("Debug module start");
 }
-
-int ModuleMain(int argc, char * argv[]) {
-    debug->Debug("Hello, Modular!");
-    return 0;
-}
-
 
 EXPORT ModuleDispatch ModuleLoad() {
     ModuleDispatch dispatch;
     dispatch.Initialize = ModuleInitialize;
     dispatch.Start = ModuleStart;
-    dispatch.Main = ModuleMain;
+    dispatch.Main = nullptr;
     return dispatch;
 }
