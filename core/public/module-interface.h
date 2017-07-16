@@ -7,9 +7,9 @@
 typedef struct {
     REQUIRED void (*Initialize)();
     REQUIRED void (*Start)();
-    OPTIONAL void (*Main)(IN int argc, IN char * argv[]);
+    OPTIONAL int (*Main)(IN int argc, IN char * argv[]);
 } ModuleDispatch;
 
-typedef ModuleDispatch (*ModuleLoadFunc)();
+typedef ModuleDispatch(*ModuleLoadFunc)();
 
 #endif

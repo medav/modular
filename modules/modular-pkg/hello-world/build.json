@@ -1,0 +1,14 @@
+{
+    "target-name": "hello-world",
+    "target-type": "dynamic",
+    "bin-dir": ".",
+    "includes": [ ],
+    "sources": {
+        "any": [
+        "source/main.cpp"
+        ],
+        "win": [ ],
+        "nix": [ ],
+        "mac": [ ]
+    } 
+}

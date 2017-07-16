@@ -1,13 +1,15 @@
 {
-    "target-name": "modular.exe",
-    "build-type": "executable",
+    "target-name": "modular",
+    "target-type": "executable",
     "bin-dir": "..",
     "includes": [ ],
     "sources": {
         "any": [
-            "source/main.cpp"
+            "source/main.cpp",
+            "source/module-manager.cpp"
         ],
         "win": [
+            "source/module-win.cpp"
         ],
         "nix": [
             "source/module-nix.cpp"

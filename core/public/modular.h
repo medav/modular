@@ -8,4 +8,6 @@
 #define IN
 #define OUT
 
+#define EXPORT extern "C" __declspec(dllexport)
+
 #endif

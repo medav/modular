@@ -3,6 +3,7 @@
 #define __MODULE__
 
 #include <filesystem>
+#include <memory>
 
 #include "module-interface.h"
 
@@ -25,9 +26,10 @@ typedef enum {
 class Module {
 private:
     fs::path module_path;
-    struct _ModuleOsHandle oshandle;
+    std::unique_ptr<struct _ModuleOsHandle> oshandle;
     ModuleDispatch dispatch;
     ModuleStatus status;
+    std::string name;
 
 public:
     Module() = delete;
@@ -38,7 +40,8 @@ public:
     void operator=(const Module& other) = delete;
     void operator=(Module&& other);
 
-    ModuleStatus Status() { return status; }
+    ModuleStatus Status() const { return status; }
+    const std::string& Name() const { return name; }
 
     const ModuleDispatch& Dispatch() const { return dispatch; }
 

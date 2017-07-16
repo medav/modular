@@ -2,13 +2,20 @@
 #ifndef __MODULE_MANAGER__
 #define __MODULE_MANAGER__
 
+#include <vector>
+#include <filesystem>
+
 #include "module.h"
 #include "module-services.h"
+
+namespace fs = std::experimental::filesystem;
 
 class ModuleManager {
 private:
     ModuleServices& services;
     std::vector<Module> modules;
+
+    void DiscoverAndLoadRecursive(const fs::path& root);
 
 public:
     ModuleManager() = delete;
@@ -21,8 +28,9 @@ public:
     void operator=(ModuleManager&& other) = delete;
 
     void DiscoverAndLoad();
-    void Init();
-    int StartModule(int argc, char * argv[]);
+    void InitAll();
+    void StartAll();
+    int ModuleMain(const std::string& module_name, int argc, char * argv[]);
 
     ~ModuleManager();
 };

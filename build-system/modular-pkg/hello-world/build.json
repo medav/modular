@@ -1,8 +1,0 @@
-{
-    "target-name": "modular.exe",
-    "bin-dir": "..",
-    "includes": [ ],
-    "sources": [
-
-    ]
-}
