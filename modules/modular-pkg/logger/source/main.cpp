@@ -4,19 +4,20 @@
 
 #include "modular.h"
 #include "module-interface.h"
-#include "debug-protocol.h"
+#include "logger-protocol.h"
+#include "logger-protocol-impl.h"
 
 ModuleServices * services;
-std::unique_ptr<DebugProtocol> debug;
+std::unique_ptr<LoggerProtocolImpl> logger_prot;
 
 void ModuleInitialize(ModuleServices * _services) {
     services = _services;
-    debug.reset(new DebugProtocol);
-    services->InstallProtocol((Protocol *) debug.get());
+    logger_prot.reset(new LoggerProtocolImpl);
+    services->InstallProtocol((Protocol *) logger_prot.get());
 }
 
 void ModuleStart() {
-    debug->Debug("Debug module start");
+    logger_prot->Log("Logger module started");
 }
 
 EXPORT ModuleDispatch ModuleLoad() {

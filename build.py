@@ -3,7 +3,17 @@ import os
 import subprocess
 
 rootdir = os.getcwd()
-core_public_dir = os.getcwd() + '/core/public'
+
+include_dirs = [os.getcwd() + '/core/public']
+
+for package in os.listdir('modules'):
+    protocol_dir = rootdir + '/modules/' + package + '/protocols'
+    if os.path.exists(protocol_dir):
+        include_dirs.append(protocol_dir)
+
+    interface_dir = rootdir + '/modules/' + package + '/interfaces'
+    if os.path.exists(interface_dir):
+        include_dirs.append(interface_dir)
 
 type_extensions = {
     'executable': 'exe',
@@ -47,8 +57,9 @@ def BuildDirectory(dir_full_path):
     flags = []
 
     AddInclude(flags, 'include')
-    AddInclude(flags, 'public')
-    AddInclude(flags, core_public_dir)
+    
+    for include_dir in include_dirs:
+        AddInclude(flags, include_dir)
 
     for incdir in config['includes']:
         print(rootdir + '/' + incdir)
@@ -70,4 +81,4 @@ def BuildDirectory(dir_full_path):
 
 BuildDirectory('core')
 BuildDirectory('modules/modular-pkg/hello-world')
-BuildDirectory('modules/modular-pkg/debug')
+BuildDirectory('modules/modular-pkg/logger')

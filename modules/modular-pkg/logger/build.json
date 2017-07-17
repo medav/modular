@@ -1,11 +1,12 @@
 {
-    "target-name": "debug",
+    "target-name": "logger",
     "target-type": "dynamic",
     "bin-dir": ".",
     "includes": [ ],
     "sources": {
         "any": [
-            "source/main.cpp"
+            "source/main.cpp",
+            "source/logger-protocol-impl.cpp"
         ],
         "win": [ ],
         "nix": [ ],

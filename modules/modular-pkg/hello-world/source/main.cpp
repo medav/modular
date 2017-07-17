@@ -4,21 +4,21 @@
 
 #include "modular.h"
 #include "module-interface.h"
-#include "debug-protocol.h"
+#include "logger-protocol.h"
 
 ModuleServices * services;
-DebugProtocol * debug;
+LoggerProtocol * logger;
 
 void ModuleInitialize(ModuleServices * _services) {
     services = _services;
 }
 
 void ModuleStart() {
-    debug = static_cast<DebugProtocol *>(services->LookupProtocol("debug"));
+    logger = static_cast<LoggerProtocol *>(services->LookupProtocol("logger"));
 }
 
 int ModuleMain(int argc, char * argv[]) {
-    debug->Debug("Hello, Modular!");
+    logger->Log("Hello, Modular!");
     return 0;
 }
 
