@@ -21,7 +21,7 @@ type_extensions = {
 }
 
 def Compile(srcfile, objdir, flags):
-    args = ['cl', '/nologo', '/EHsc'] + flags + ['/c', srcfile, '/Fo:obj\\']
+    args = ['cl', '/nologo', '/EHsc', '/FS', '/Zi'] + flags + ['/c', srcfile, '/Fo:obj\\']
     # print(args)
     proc = subprocess.Popen(args)
     
@@ -36,7 +36,10 @@ def Link(config, objs):
     if config['target-type'] == 'dynamic':
         flags.append('/DLL')
 
-    args = ['link', '/nologo'] + flags + objs + ['/out:' + config['bin-dir'] + '/' + config['target-name'] + '.' + type_extensions[config['target-type']]]
+    target_name = config['bin-dir'] + '/' + config['target-name'] + '.' + type_extensions[config['target-type']]
+    pdb_name = config['bin-dir'] + '/' + config['target-name'] + '.pdb'
+
+    args = ['link', '/nologo'] + flags + objs + ['/debug', '/pdb:' + pdb_name] + ['/out:' + target_name]
     # print(args)
     subprocess.Popen(args).wait()
 
@@ -62,7 +65,6 @@ def BuildDirectory(dir_full_path):
         AddInclude(flags, include_dir)
 
     for incdir in config['includes']:
-        print(rootdir + '/' + incdir)
         AddInclude(flags, rootdir + '/' + incdir)
 
     sources = config['sources']['any'] + config['sources']['win']
