@@ -35,10 +35,10 @@ void ModuleManager::DiscoverAndLoad() {
     DiscoverAndLoadRecursive(fs::path("modules"));
 }
 
-void ModuleManager::InitAll() {
+void ModuleManager::InitAll(ModuleServices& services) {
     for (Module& module :  modules) {
         if (module.Status() == ModuleLoaded)
-            module.Dispatch().Initialize(&services);
+            module.Dispatch().Initialize(services);
     }
 }
 

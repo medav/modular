@@ -2,23 +2,22 @@
 #ifndef __PROTOCOL__
 #define __PROTOCOL__
 
+#include <iostream>
 #include <string>
 
 class Protocol {
-protected:
-    std::string name;
-    unsigned int version;
+private:
+    std::string type;
 
 public:
     Protocol() = delete;
-    Protocol(const std::string& _name, unsigned int _version) : name(_name), version(_version) { }
+    Protocol(const std::string& _type) : type(_type) { }
     Protocol(const Protocol& other) = delete;
     Protocol(Protocol&& other) = delete;
     void operator=(const Protocol& other) = delete;
     void operator=(Protocol&& other) = delete;
 
-    virtual const std::string& Name() { return name; }
-    virtual unsigned int Version() { return version; }
+    const std::string& Type() { return type; }
 
     virtual ~Protocol() { }
 };

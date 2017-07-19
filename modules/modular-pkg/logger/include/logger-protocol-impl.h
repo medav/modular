@@ -10,7 +10,7 @@
 
 class LoggerProtocolImpl : public LoggerProtocol {
 public:
-    LoggerProtocolImpl() : LoggerProtocol(0) { }
+    LoggerProtocolImpl() : LoggerProtocol() { }
 
     virtual void Log(std::string msg);
 };

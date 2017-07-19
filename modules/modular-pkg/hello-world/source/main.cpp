@@ -7,21 +7,20 @@
 #include "logger-protocol.h"
 
 ModuleServices * services;
-LoggerProtocol * logger;
+std::shared_ptr<LoggerProtocol> logger_prot;
 
-void ModuleInitialize(ModuleServices * _services) {
-    services = _services;
+void ModuleInitialize(ModuleServices& _services) {
+    services = &_services;
 }
 
 void ModuleStart() {
-    logger = static_cast<LoggerProtocol *>(services->LookupProtocol("logger"));
+    logger_prot = std::dynamic_pointer_cast<LoggerProtocol>(services->LookupProtocol("logger"));
 }
 
 int ModuleMain(int argc, char * argv[]) {
-    logger->Log("Hello, Modular!");
+    logger_prot->Log("Hello, Modular!");
     return 0;
 }
-
 
 EXPORT ModuleDispatch ModuleLoad() {
     ModuleDispatch dispatch;

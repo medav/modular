@@ -6,21 +6,18 @@
 #include <filesystem>
 
 #include "module.h"
-#include "module-services.h"
+#include "module-services-impl.h"
 
 namespace fs = std::experimental::filesystem;
 
 class ModuleManager {
 private:
-    ModuleServices& services;
     std::vector<Module> modules;
 
     void DiscoverAndLoadRecursive(const fs::path& root);
 
 public:
-    ModuleManager() = delete;
-    ModuleManager(ModuleServices& _services) : services(_services) { }
-
+    ModuleManager() = default;
     ModuleManager(const ModuleManager& other) = delete;
     ModuleManager(ModuleManager&& other) = delete;
 
@@ -28,7 +25,7 @@ public:
     void operator=(ModuleManager&& other) = delete;
 
     void DiscoverAndLoad();
-    void InitAll();
+    void InitAll(ModuleServices& services);
     void StartAll();
     int ModuleMain(const std::string& module_name, int argc, char * argv[]);
 

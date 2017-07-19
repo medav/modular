@@ -8,16 +8,16 @@
 #include "logger-protocol-impl.h"
 
 ModuleServices * services;
-std::unique_ptr<LoggerProtocolImpl> logger_prot;
+std::shared_ptr<LoggerProtocol> logger_prot;
 
-void ModuleInitialize(ModuleServices * _services) {
-    services = _services;
-    logger_prot.reset(new LoggerProtocolImpl);
-    services->InstallProtocol((Protocol *) logger_prot.get());
+void ModuleInitialize(ModuleServices& _services) {
+    services = &_services;
+    services->InstallProtocol(std::make_shared<LoggerProtocolImpl>());
 }
 
 void ModuleStart() {
-    logger_prot->Log("Logger module started");
+    logger_prot = std::dynamic_pointer_cast<LoggerProtocol>(services->LookupProtocol("logger"));
+    logger_prot->Log("Logger module started.");
 }
 
 EXPORT ModuleDispatch ModuleLoad() {

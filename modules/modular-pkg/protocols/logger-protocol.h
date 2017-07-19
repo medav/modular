@@ -9,7 +9,7 @@
 
 class LoggerProtocol : public Protocol {
 public:
-    LoggerProtocol(unsigned int _version) : Protocol("logger", _version) { }
+    LoggerProtocol() : Protocol("logger") { }
 
     virtual void Log(std::string msg) = 0;
 };

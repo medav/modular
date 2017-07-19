@@ -2,16 +2,24 @@
 #include <cassert>
 
 #include "module-manager.h"
-#include "module-services.h"
+#include "module-services-impl.h"
 
 int main(int argc, char * argv[]) {
     assert(argc > 1);
 
-    ModuleServices services;
-    ModuleManager modman(services);
+    int return_value = 0;
 
-    modman.DiscoverAndLoad();
-    modman.InitAll();
-    modman.StartAll();
-    return modman.ModuleMain(argv[1], argc - 2, argv + 2);
+    ModuleManager modman;
+
+    {
+        ModuleServicesImpl services;
+
+        modman.DiscoverAndLoad();
+        modman.InitAll(services);
+        modman.StartAll();
+
+        return_value = modman.ModuleMain(argv[1], argc - 2, argv + 2);
+    }
+    
+    return return_value;
 }
