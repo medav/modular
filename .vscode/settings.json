@@ -54,5 +54,21 @@
         "xhash": "cpp",
         "xtree": "cpp",
         "fstream": "cpp"
+    },
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.ilk": true,
+        "**/obj": true,
+        "**/*.exp": true,
+        "**/vc140.pdb": true,
+        "**/*.lib": true,
+        "**/*.dll": true,
+        "**/*.pdb": true,
+        "**/*.exe": true
     }
 }
