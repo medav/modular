@@ -7,11 +7,11 @@ rootdir = os.getcwd()
 include_dirs = [os.getcwd() + '/core/public']
 
 for package in os.listdir('modules'):
-    protocol_dir = rootdir + '/modules/' + package + '/protocols'
+    protocol_dir = rootdir + '/modules/' + package + '/_protocols'
     if os.path.exists(protocol_dir):
         include_dirs.append(protocol_dir)
 
-    interface_dir = rootdir + '/modules/' + package + '/interfaces'
+    interface_dir = rootdir + '/modules/' + package + '/_interfaces'
     if os.path.exists(interface_dir):
         include_dirs.append(interface_dir)
 
@@ -82,5 +82,5 @@ def BuildDirectory(dir_full_path):
     os.chdir(curdir)
 
 BuildDirectory('core')
-BuildDirectory('modules/modular-pkg/hello-world')
-BuildDirectory('modules/modular-pkg/logger')
+BuildDirectory('modules/modular-pkg/modular-hello')
+BuildDirectory('modules/modular-pkg/modular-telemetry')

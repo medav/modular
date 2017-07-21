@@ -62,7 +62,7 @@ Protocols are interfaces global to the application that are provided implementat
 A module can provide a protocol by providing a private implementation of a protocol declared in any package's `protocols/` folder then installing an instance of that implementation using the modular services provided during ModuleInit().
 
 ## 4.2 Type Naming Convention
-Modular adhere's to a all lowercase, 'dashed' convention. With the exception of extremely common [*] acronyms, no abbreviations or acronyms are used. No trailing '-protocol' is used in a protocol's type name.
+Modular adhere's to a all lowercase, 'dashed' convention. With the exception of extremely common [*] acronyms or abbreviations, no abbreviations or acronyms are used. No trailing '-protocol' is used in a protocol's type name.
 
 [*] '*Extremely common*' is subject to interpretation.
 
@@ -92,3 +92,9 @@ Protocols can be used to provide service style functionality. For example, consi
 ## 4.5 Protocols as Factories
 Protocols can also (and are intended to) be used as object factories. Public object delarations (described in another section) contain no implementation and constructor details. A module can provide a method for creating backing implementations through a protocol serving as a factory for that particular object type. Note that protocols used as factories carry no distinction from other protocols.
 
+Nameing:
+
+Abbvreviations used:
+Impl - Implementation
+Num - Number of
+Func - Function typedef suffix

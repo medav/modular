@@ -1,12 +1,13 @@
 {
-    "target-name": "logger",
+    "target-name": "modular-hello",
     "target-type": "dynamic",
     "bin-dir": ".",
-    "includes": [ ],
+    "includes": [
+        "modules/modular-pkg/debug/public"
+    ],
     "sources": {
         "any": [
-            "source/main.cpp",
-            "source/logger-protocol-impl.cpp"
+        "source/main.cpp"
         ],
         "win": [ ],
         "nix": [ ],
