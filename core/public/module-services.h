@@ -4,9 +4,12 @@
 
 #include <iostream>
 #include <memory>
+#include <functional>
 #include <unordered_map>
 
 #include "protocol.h"
+
+typedef std::function<bool(const std::shared_ptr<Protocol>& protocol)> ProtocolFilterFunc;
 
 class ModuleServices {
 public:
@@ -17,7 +20,13 @@ public:
     void operator=(ModuleServices&& other) = delete;
 
     virtual void InstallProtocol(const std::shared_ptr<Protocol>& protocol) = 0;
-    virtual const std::shared_ptr<Protocol>& LookupProtocol(const std::string& name) = 0;
+
+    virtual const std::shared_ptr<Protocol>& LookupProtocol(
+        const std::string& type) = 0;
+
+    virtual const std::shared_ptr<Protocol>& LookupProtocolByFilter(
+        const std::string& type, 
+        ProtocolFilterFunc ProtocolFilter) = 0;
 };
 
 #endif

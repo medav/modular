@@ -42,8 +42,8 @@ public:
 
     ModuleStatus Status() const { return status; }
     const std::string& Name() const { return name; }
-
     const ModuleDispatch& Dispatch() const { return dispatch; }
+    const bool IsStartupModule() const { return dispatch.Main != nullptr; }
 
     ~Module();
 };

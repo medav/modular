@@ -4,9 +4,11 @@
 
 #include <iostream>
 #include <memory>
+#include <functional>
 #include <unordered_map>
 
 #include "protocol.h"
+#include "modular-debug.h"
 #include "module-services.h"
 
 typedef std::vector<std::shared_ptr<Protocol>> ProtocolSet;
@@ -14,24 +16,50 @@ typedef std::vector<std::shared_ptr<Protocol>> ProtocolSet;
 class ModuleServicesImpl : public ModuleServices {
 private:
     std::unordered_map<std::string, ProtocolSet> protocols;
-    std::shared_ptr<Protocol> prot;
+    std::shared_ptr<Protocol> null_protocol;
 
 public:
-    ModuleServicesImpl() : ModuleServices(), protocols() { }
+    ModuleServicesImpl() : 
+        ModuleServices(), protocols(), null_protocol(nullptr) { }
 
     virtual void InstallProtocol(const std::shared_ptr<Protocol>& protocol) {
-        prot = protocol;
-        // if (protocols.count(protocol->Type()) == 0) {
-        //     protocols[protocol->Type()] = ProtocolSet();
-        // }
 
-        // protocols[protocol->Type()].push_back(protocol);
+        std::cout << protocol->Type() << std::endl;
+        if (protocols.count(protocol->Type()) == 0) {
+            protocols[protocol->Type()] = ProtocolSet();
+        }
+
+        protocols[protocol->Type()].push_back(protocol);
     }
 
-    virtual const std::shared_ptr<Protocol>& LookupProtocol(const std::string& type) {
-        // TODO: Error checking
-        // return protocols[type][0];
-        return prot;
+    virtual const std::shared_ptr<Protocol>& LookupProtocol(
+        const std::string& type) {
+
+        ASSERT(protocols.find(type) != protocols.end());
+
+        auto& protocol_set = protocols[type];
+        ASSERT(protocol_set.size() > 0);
+
+        return protocol_set[0];
+    }
+
+    virtual const std::shared_ptr<Protocol>& LookupProtocolByFilter(
+        const std::string& type, 
+        ProtocolFilterFunc ProtocolFilter) {
+
+        ASSERT(protocols.find(type) != protocols.end());
+        
+        auto& protocol_set = protocols[type];
+        
+        for (auto& protocol : protocol_set) {
+            if (ProtocolFilter(protocol)) {
+                return protocol;
+            }
+        }
+
+        ASSERT(false);
+
+        return null_protocol;
     }
 };
 

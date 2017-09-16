@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "modular.h"
+#include "modular-debug.h"
 #include "module-interface.h"
 #include "logger-protocol.h"
 

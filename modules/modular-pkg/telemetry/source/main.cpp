@@ -5,7 +5,7 @@
 #include "modular.h"
 #include "module-interface.h"
 #include "logger-protocol.h"
-#include "logger-protocol-impl.h"
+#include "logger.h"
 
 ModuleServices * services;
 std::shared_ptr<LoggerProtocol> logger_prot;

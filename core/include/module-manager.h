@@ -29,6 +29,9 @@ public:
     void StartAll();
     int ModuleMain(const std::string& module_name, int argc, char * argv[]);
 
+    const auto begin() const { return modules.begin(); }
+    const auto end() const { return modules.end(); }
+
     ~ModuleManager();
 };
 

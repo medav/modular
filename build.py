@@ -82,5 +82,8 @@ def BuildDirectory(dir_full_path):
     os.chdir(curdir)
 
 BuildDirectory('core')
-BuildDirectory('modules/modular-pkg/modular-hello')
-BuildDirectory('modules/modular-pkg/modular-telemetry')
+BuildDirectory('modules/modular-pkg/hello')
+BuildDirectory('modules/modular-pkg/telemetry')
+# BuildDirectory('modules/fem-pkg/fem-example')
+# BuildDirectory('modules/fem-pkg/fem-mesh')
+# BuildDirectory('modules/fem-pkg/fem-tecplt')

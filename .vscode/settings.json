@@ -53,7 +53,27 @@
         "unordered_map": "cpp",
         "xhash": "cpp",
         "xtree": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "functional": "cpp",
+        "xfunctional": "cpp",
+        "array": "cpp",
+        "atomic": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "deque": "cpp",
+        "future": "cpp",
+        "hash_map": "cpp",
+        "iomanip": "cpp",
+        "iterator": "cpp",
+        "mutex": "cpp",
+        "numeric": "cpp",
+        "queue": "cpp",
+        "random": "cpp",
+        "set": "cpp",
+        "sstream": "cpp",
+        "thread": "cpp",
+        "alignedvector3": "cpp",
+        "tensor": "cpp"
     },
 
     "files.exclude": {

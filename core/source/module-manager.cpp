@@ -1,9 +1,9 @@
 
-#include <cassert>
 #include <filesystem>
 #include <iostream>
 #include <vector>
 
+#include "modular-debug.h"
 #include "module-manager.h"
 
 namespace fs = std::experimental::filesystem;
@@ -54,9 +54,9 @@ int ModuleManager::ModuleMain(const std::string& module_name, int argc, char * a
         return module.Name() == module_name;
     });
 
-    assert(it != modules.end());
+    ASSERT(it != modules.end());
     Module& start_module = *it;
-    assert(start_module.Dispatch().Main != nullptr);
+    ASSERT(start_module.IsStartupModule());
 
     return start_module.Dispatch().Main(argc, argv);
 }

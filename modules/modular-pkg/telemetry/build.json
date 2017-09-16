@@ -1,13 +1,12 @@
 {
-    "target-name": "modular-hello",
+    "target-name": "telemetry",
     "target-type": "dynamic",
     "bin-dir": ".",
-    "includes": [
-        "modules/modular-pkg/debug/public"
-    ],
+    "includes": [ ],
     "sources": {
         "any": [
-        "source/main.cpp"
+            "source/main.cpp",
+            "source/logger.cpp"
         ],
         "win": [ ],
         "nix": [ ],
