@@ -1,5 +1,5 @@
-# Modular - Under Construction (and full of typos)
-Modular is an open-source, cross-platform, MIT licensed modular framework for C/C++ applications. It was inspired by the organization of the the Tianocore project. Instead of firmware, however, Modular aims to be a framework for developing user-mode appliactions.
+# Modular C/C++ Application Framework
+Modular is an open-source, cross-platform, MIT licensed modular framework for C/C++ applications. It was inspired by the organization of the the Tianocore project. Instead of firmware, however, Modular aims to be a framework for developing user-mode applications.
 
 What Modular provides:
 

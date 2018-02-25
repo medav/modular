@@ -87,8 +87,9 @@
         "**/*.exp": true,
         "**/vc140.pdb": true,
         "**/*.lib": true,
-        "**/*.dll": true,
+        "**/*.dll": false,
         "**/*.pdb": true,
-        "**/*.exe": true
+        "**/*.exe": false,
+        "bazel-*/**": true,
     }
 }
