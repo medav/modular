@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include "protocol.h"
+#include "core/public/protocol.h"
 #include "logger-protocol.h"
 
 class LoggerProtocolImpl : public LoggerProtocol {

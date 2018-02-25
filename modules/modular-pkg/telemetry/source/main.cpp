@@ -2,8 +2,8 @@
 #include <iostream>
 #include <memory>
 
-#include "modular.h"
-#include "module-interface.h"
+#include "core/public/modular.h"
+#include "core/public/module-interface.h"
 #include "logger-protocol.h"
 #include "logger.h"
 

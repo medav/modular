@@ -4,7 +4,7 @@
 #include <windows.h>
 
 #include "module.h"
-#include "modular.h"
+#include "public/modular.h"
 
 namespace fs = std::experimental::filesystem;
 

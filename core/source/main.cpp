@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "modular-debug.h"
+#include "public/modular-debug.h"
 #include "module-manager.h"
 #include "module-services-impl.h"
 

@@ -5,3 +5,4 @@
 *.lib
 *.ilk
 *.pdb
+bazel-*/**

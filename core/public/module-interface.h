@@ -8,11 +8,11 @@
 #include "module-services.h"
 
 typedef struct {
-    REQUIRED void (*Initialize)(ModuleServices& services);
+    REQUIRED void (*Initialize)(IN ModuleServices& services);
     REQUIRED void (*Start)();
     OPTIONAL int (*Main)(IN int argc, IN char * argv[]);
 } ModuleDispatch;
 
-typedef ModuleDispatch(*ModuleLoadFunc)();
+using ModuleLoadFunc = ModuleDispatch(*)(void);
 
 #endif

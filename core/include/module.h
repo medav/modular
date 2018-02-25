@@ -5,7 +5,7 @@
 #include <filesystem>
 #include <memory>
 
-#include "module-interface.h"
+#include "public/module-interface.h"
 
 namespace fs = std::experimental::filesystem;
 

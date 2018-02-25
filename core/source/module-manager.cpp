@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "modular-debug.h"
+#include "public/modular-debug.h"
 #include "module-manager.h"
 
 namespace fs = std::experimental::filesystem;

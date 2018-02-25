@@ -7,9 +7,9 @@
 #include <functional>
 #include <unordered_map>
 
-#include "protocol.h"
-#include "modular-debug.h"
-#include "module-services.h"
+#include "public/protocol.h"
+#include "public/modular-debug.h"
+#include "public/module-services.h"
 
 typedef std::vector<std::shared_ptr<Protocol>> ProtocolSet;
 

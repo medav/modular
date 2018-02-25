@@ -2,9 +2,9 @@
 #include <iostream>
 #include <memory>
 
-#include "modular.h"
-#include "modular-debug.h"
-#include "module-interface.h"
+#include "core/public/modular.h"
+#include "core/public/modular-debug.h"
+#include "core/public/module-interface.h"
 #include "logger-protocol.h"
 
 ModuleServices * services;
