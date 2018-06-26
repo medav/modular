@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "public/modular-debug.h"
 #include "module-manager.h"
@@ -50,7 +51,7 @@ void ModuleManager::StartAll() {
 }
 
 int ModuleManager::ModuleMain(const std::string& module_name, int argc, char * argv[]) {
-    auto& it = std::find_if(modules.begin(), modules.end(), [&](Module& module) -> bool {
+    const auto& it = std::find_if(modules.begin(), modules.end(), [&](Module& module) -> bool {
         return module.Name() == module_name;
     });
 
